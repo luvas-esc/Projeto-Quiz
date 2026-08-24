@@ -1,0 +1,81 @@
+.quiz-container{
+    align-items: left;
+
+    background-color: #e1dba8;
+
+    padding:15px;
+
+    border-radius:8px;
+    width: 700px;
+    vertical-align: super;
+
+    display:grid;
+    grid-template-columns: 7fr 3fr;
+    
+}
+
+
+#fontePergunta{
+    margin:5px;
+    font-size: 7px;
+}
+
+#tituloQuiz{
+    margin: 5px;
+}
+
+#areaConhecimento{
+    margin: 5px;
+}
+
+#enunciadoPergunta{
+    white-space: pre-wrap;
+    color:#074506;
+    border: 2px solid;
+    margin: 5px;
+    padding: 5px;
+
+}
+
+
+
+
+#alternativas{
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: left;
+    margin: 5px;
+}
+
+button{
+    margin: 5px;
+    text-align: left;
+}
+
+#infoUsuario{
+    border: solid 2px black;
+}
+
+#respondidas{
+    margin: 5px;
+}
+
+#acertos{
+    margin: 5px;
+}
+
+#colunaEsq{
+    margin: 5px;
+    border: 2px solid black
+}
+
+#colunaDir{
+    margin: 5px;
+    border: 2px solid black;
+}
+
+#botaoProxima{
+    margin: 5px;
+}

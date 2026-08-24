@@ -1,0 +1,147 @@
+
+// Pega o arquivo JSON com as questões
+let docQuestoes = await fetch("questoes.json");
+
+// Converte o arquivo JSON em um objeto JavaScript
+let dados = await docQuestoes.json();
+
+let areaConhecimentoElement = document.getElementById("areaConhecimento");
+let areaConhecimentoElementValue = areaConhecimentoElement.value;
+let listaQuestoes = dados.questoes.filter(function(questao){
+    return questao.tema === areaConhecimentoElementValue;
+})
+
+areaConhecimentoElement.onclick = function(){exibirQuestao(0)};
+
+// Variáveis globais
+let qtdQuestoes = 0;
+let qtdAcertos = 0;
+let qtdErros = 0;
+let questao = 0;
+
+
+// Define os elementos do HTML que serão atualizados com as informações das questões
+const fonteElement = document.getElementById("fontePergunta");
+const perguntaElement = document.getElementById("enunciadoPergunta");
+
+const alternativa1Element = document.getElementById("alternativa1");
+const alternativa2Element = document.getElementById("alternativa2");
+const alternativa3Element = document.getElementById("alternativa3");
+const alternativa4Element = document.getElementById("alternativa4");
+const alternativa5Element = document.getElementById("alternativa5");
+
+const acertosElement = document.getElementById("acertos");
+const respondidasElement = document.getElementById("respondidas");
+
+const containerProximaQuestao = document.getElementById("botaoProxima");
+
+
+// Função para exibir a questão atual. Colocando os valores de dados do JSON nos 
+// elementos HTML correspondentes.
+function exibirQuestao(questao){
+    
+
+    let questaoAtual = listaQuestoes[questao];
+
+    let fonte = questaoAtual.fonte;
+    fonteElement.textContent = fonte;
+
+ //   let areaConhecimento = questaoAtual.tema;
+ //   areaConhecimentoElement.textContent = areaConhecimento;
+
+    let enunciado = questaoAtual.enunciado;
+    perguntaElement.textContent = enunciado;
+
+    let alternativas = questaoAtual.alternativas;
+    alternativa1Element.textContent = alternativas.A;
+    alternativa2Element.textContent = alternativas.B;
+    alternativa3Element.textContent = alternativas.C;
+    alternativa4Element.textContent = alternativas.D;
+    alternativa5Element.textContent = alternativas.E;    
+
+    alternativa1Element.onclick = function() { verificarResposta('A', this) };
+    alternativa1Element.style.backgroundColor = "";
+    alternativa2Element.onclick = function() { verificarResposta('B', this) };
+    alternativa2Element.style.backgroundColor = "";
+    alternativa3Element.onclick = function() { verificarResposta('C', this) };
+    alternativa3Element.style.backgroundColor = "";
+    alternativa4Element.onclick = function() { verificarResposta('D', this) };
+    alternativa4Element.style.backgroundColor = "";
+    alternativa5Element.onclick = function() { verificarResposta('E', this) };
+    alternativa5Element.style.backgroundColor = "";
+}
+
+
+// Verifica se a alternativa selecionada é a correta. Se for, muda a cor de fundo da 
+// alternativa para verde, se for errada, muda para vermelho e mostra a certa.
+function verificarResposta(alternativaSelecionada, botao){
+    
+
+    if (containerProximaQuestao.querySelector("button") == null) {
+        
+        let questaoAtual = listaQuestoes[questao];
+        let respostaCorreta = questaoAtual.resposta;
+
+        qtdQuestoes++;
+
+        if (alternativaSelecionada === respostaCorreta) {
+            qtdAcertos++;
+            botao.style.backgroundColor = "#6ae068";
+        }
+
+        else {
+            botao.style.backgroundColor = "red"
+
+            qtdErros++;
+
+            // Confere qual botão corresponde a alternativa correta
+            let botaoCorreto;
+
+            if (respostaCorreta === 'A') {
+                botaoCorreto = alternativa1Element;
+            } else if (respostaCorreta === 'B') {
+                botaoCorreto = alternativa2Element;
+            } else if (respostaCorreta === 'C') {
+                botaoCorreto = alternativa3Element;
+            } else if (respostaCorreta === 'D') {
+                botaoCorreto = alternativa4Element;
+            } else if (respostaCorreta === 'E') {
+                botaoCorreto = alternativa5Element;
+            }
+
+            botaoCorreto.style.backgroundColor = "#6ae068";
+        }
+
+    respondidasElement.textContent = "Questões Respondidas: " + qtdQuestoes;
+    acertosElement.textContent = "Quantidade de Acertos: " + qtdAcertos;
+    }
+    
+    botaoProximaQuestao();
+}
+
+// Exibe o botão de ir para a próxima questão caso ele não esteja disponível ainda. 
+function botaoProximaQuestao(){    
+
+    if (containerProximaQuestao.querySelector("button") == null) {
+
+        let botaoQuestao = document.createElement("button")
+
+        botaoQuestao.textContent = "Próxima Questão"; 
+        botaoQuestao.style.margin = "5px";
+        botaoQuestao.onclick = function() {
+            exibirQuestao(questao+=1); 
+            containerProximaQuestao.removeChild(botaoQuestao);
+        }
+    
+    containerProximaQuestao.appendChild(botaoQuestao);
+
+    }
+}
+
+function quizLoop(){
+    
+    exibirQuestao(0);
+}
+
+quizLoop();
+
