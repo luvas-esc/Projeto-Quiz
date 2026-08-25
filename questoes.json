@@ -749,6 +749,51 @@
       "E": "atua como um antibiótico natural que penetra nas células das frutas matando os fungos, impedindo a desidratação e a cristalização das frutas."
     },
     "resposta": "D"
+  },
+    {
+    "id": 47,
+    "fonte": "Fim",
+    "categoria": "vestibular",
+    "tema": "Biologia",
+    "enunciado": "Fim",
+    "alternativas": {
+      "A": "a concentração do oxigênio nos tecidos do corpo é menor do que a concentração do oxigênio das hemácias do sangue.",
+      "B": "a temperatura corporal diminui durante o processo de difusão do oxigênio das hemácias para os tecidos do corpo.",
+      "C": "o oxigênio é atraído pelo nitrogênio, presente nas células, para neutralizar o gás carbônico dos tecidos do corpo.",
+      "D": "as hemácias são destruídas ao chegar aos tecidos do corpo, liberando o oxigênio para o metabolismo celular.",
+      "E": "o aumento da concentração de gás carbônico é maior nas hemácias do que nos tecidos do corpo."
+    },
+    "resposta": "A"
+  },
+      {
+    "id": 47,
+    "fonte": "Fim",
+    "categoria": "vestibular",
+    "tema": "Química",
+    "enunciado": "Fim",
+    "alternativas": {
+      "A": "a concentração do oxigênio nos tecidos do corpo é menor do que a concentração do oxigênio das hemácias do sangue.",
+      "B": "a temperatura corporal diminui durante o processo de difusão do oxigênio das hemácias para os tecidos do corpo.",
+      "C": "o oxigênio é atraído pelo nitrogênio, presente nas células, para neutralizar o gás carbônico dos tecidos do corpo.",
+      "D": "as hemácias são destruídas ao chegar aos tecidos do corpo, liberando o oxigênio para o metabolismo celular.",
+      "E": "o aumento da concentração de gás carbônico é maior nas hemácias do que nos tecidos do corpo."
+    },
+    "resposta": "A"
+  },
+      {
+    "id": 47,
+    "fonte": "Fim",
+    "categoria": "vestibular",
+    "tema": "Sociologia",
+    "enunciado": "Fim",
+    "alternativas": {
+      "A": "a concentração do oxigênio nos tecidos do corpo é menor do que a concentração do oxigênio das hemácias do sangue.",
+      "B": "a temperatura corporal diminui durante o processo de difusão do oxigênio das hemácias para os tecidos do corpo.",
+      "C": "o oxigênio é atraído pelo nitrogênio, presente nas células, para neutralizar o gás carbônico dos tecidos do corpo.",
+      "D": "as hemácias são destruídas ao chegar aos tecidos do corpo, liberando o oxigênio para o metabolismo celular.",
+      "E": "o aumento da concentração de gás carbônico é maior nas hemácias do que nos tecidos do corpo."
+    },
+    "resposta": "A"
   }
 ]
 }

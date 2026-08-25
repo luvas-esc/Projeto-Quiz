@@ -6,18 +6,17 @@ let docQuestoes = await fetch("questoes.json");
 let dados = await docQuestoes.json();
 
 let areaConhecimentoElement = document.getElementById("areaConhecimento");
-let areaConhecimentoElementValue = areaConhecimentoElement.value;
 let listaQuestoes = dados.questoes.filter(function(questao){
-    return questao.tema === areaConhecimentoElementValue;
-})
+    return questao.tema === areaConhecimentoElement.value;
+});
 
-areaConhecimentoElement.onclick = function(){exibirQuestao(0)};
 
 // Variáveis globais
 let qtdQuestoes = 0;
 let qtdAcertos = 0;
 let qtdErros = 0;
 let questao = 0;
+let botaoQuestao = document.createElement("button");
 
 
 // Define os elementos do HTML que serão atualizados com as informações das questões
@@ -46,9 +45,6 @@ function exibirQuestao(questao){
     let fonte = questaoAtual.fonte;
     fonteElement.textContent = fonte;
 
- //   let areaConhecimento = questaoAtual.tema;
- //   areaConhecimentoElement.textContent = areaConhecimento;
-
     let enunciado = questaoAtual.enunciado;
     perguntaElement.textContent = enunciado;
 
@@ -69,7 +65,12 @@ function exibirQuestao(questao){
     alternativa4Element.style.backgroundColor = "";
     alternativa5Element.onclick = function() { verificarResposta('E', this) };
     alternativa5Element.style.backgroundColor = "";
-}
+
+
+
+};
+
+
 
 
 // Verifica se a alternativa selecionada é a correta. Se for, muda a cor de fundo da 
@@ -119,12 +120,26 @@ function verificarResposta(alternativaSelecionada, botao){
     botaoProximaQuestao();
 }
 
+
+// Muda a lista de questões pelo tema. 
+areaConhecimentoElement.onchange = function(){
+    listaQuestoes = dados.questoes.filter(function(questao){
+        return questao.tema === areaConhecimentoElement.value;});
+
+    exibirQuestao(0)
+    questao = 0
+    containerProximaQuestao.removeChild(botaoQuestao)
+
+
+};
+
+
 // Exibe o botão de ir para a próxima questão caso ele não esteja disponível ainda. 
 function botaoProximaQuestao(){    
 
     if (containerProximaQuestao.querySelector("button") == null) {
 
-        let botaoQuestao = document.createElement("button")
+        botaoQuestao = document.createElement("button")
 
         botaoQuestao.textContent = "Próxima Questão"; 
         botaoQuestao.style.margin = "5px";
