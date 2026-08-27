@@ -1,14 +1,11 @@
 
 // Pega o arquivo JSON com as questões
-let docQuestoes = await fetch("questoes.json");
+let docQuestoes = await fetch("questoes_etec/questoes_etec.json");
 
 // Converte o arquivo JSON em um objeto JavaScript
 let dados = await docQuestoes.json();
-
+let listaQuestoes =  dados.questoes;
 let areaConhecimentoElement = document.getElementById("areaConhecimento");
-let listaQuestoes = dados.questoes.filter(function(questao){
-    return questao.tema === areaConhecimentoElement.value;
-});
 
 
 // Variáveis globais
@@ -21,7 +18,10 @@ let botaoQuestao = document.createElement("button");
 
 // Define os elementos do HTML que serão atualizados com as informações das questões
 const fonteElement = document.getElementById("fontePergunta");
+const idElement = document.getElementById("id_pergunta");
 const perguntaElement = document.getElementById("enunciadoPergunta");
+
+const imagemElement = document.getElementById("imagem");
 
 const alternativa1Element = document.getElementById("alternativa1");
 const alternativa2Element = document.getElementById("alternativa2");
@@ -38,22 +38,33 @@ const containerProximaQuestao = document.getElementById("botaoProxima");
 // Função para exibir a questão atual. Colocando os valores de dados do JSON nos 
 // elementos HTML correspondentes.
 function exibirQuestao(questao){
-    
 
     let questaoAtual = listaQuestoes[questao];
 
     let fonte = questaoAtual.fonte;
-    fonteElement.textContent = fonte;
+    fonteElement.innerHTML = fonte;
+
+    let id = questaoAtual.id;
+    idElement.innerHTML = ("Id:"+id);
 
     let enunciado = questaoAtual.enunciado;
-    perguntaElement.textContent = enunciado;
+    perguntaElement.innerHTML = enunciado;
+
+    let imagemAtual = questaoAtual.imagem;
+
+    if (imagemAtual) {
+    imagemElement.src = imagemAtual;
+    imagemElement.style.display = "block";
+} else {
+    imagemElement.style.display = "none";
+}
 
     let alternativas = questaoAtual.alternativas;
-    alternativa1Element.textContent = alternativas.A;
-    alternativa2Element.textContent = alternativas.B;
-    alternativa3Element.textContent = alternativas.C;
-    alternativa4Element.textContent = alternativas.D;
-    alternativa5Element.textContent = alternativas.E;    
+    alternativa1Element.innerHTML = alternativas.A;
+    alternativa2Element.innerHTML = alternativas.B;
+    alternativa3Element.innerHTML = alternativas.C;
+    alternativa4Element.innerHTML = alternativas.D;
+    alternativa5Element.innerHTML = alternativas.E;    
 
     alternativa1Element.onclick = function() { verificarResposta('A', this) };
     alternativa1Element.style.backgroundColor = "";
@@ -65,12 +76,7 @@ function exibirQuestao(questao){
     alternativa4Element.style.backgroundColor = "";
     alternativa5Element.onclick = function() { verificarResposta('E', this) };
     alternativa5Element.style.backgroundColor = "";
-
-
-
 };
-
-
 
 
 // Verifica se a alternativa selecionada é a correta. Se for, muda a cor de fundo da 
@@ -123,9 +129,15 @@ function verificarResposta(alternativaSelecionada, botao){
 
 // Muda a lista de questões pelo tema. 
 areaConhecimentoElement.onchange = function(){
+    if (areaConhecimentoElement.value === "Todos"){
+    listaQuestoes = dados.questoes;
+    }
+    
+    else{
     listaQuestoes = dados.questoes.filter(function(questao){
+        
         return questao.tema === areaConhecimentoElement.value;});
-
+    }
     exibirQuestao(0)
     questao = 0
     containerProximaQuestao.removeChild(botaoQuestao)

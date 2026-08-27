@@ -14,20 +14,27 @@
 
 <body>
 
+<h1 id="tituloQuiz"> Hortus Studiorum </h1>
+
 <div class = "quiz-container">
 
+
     <div id="colunaEsq">
-        <h1 id="tituloQuiz"> Título do Quiz </h1>
+        
+        
+        <div id="temaPerguntas">
+            <label>Escolha um tema:</label>
+            <select id="areaConhecimento">
+                <option value="Todos">Todos</option>
+                <option value="Sociologia">Sociologia</option>
+                <option value="Química">Química</option>
+                <option value="Biologia">Biologia</option>
+            </select>
+        </div>
 
         <p id="fontePergunta"> Fonte da Pergunta</p>
 
-        <label>Escolha um tema:</label>
-            <select id="areaConhecimento">
-                <option value="Biologia">Biologia</option>
-                <option value="Sociologia">Sociologia</option>
-                <option value="Química">Química</option>
-            </select>
-  
+        <p id="id_pergunta">Id: </p>
 
         <div id="enunciadoPergunta"> 
             
@@ -38,6 +45,8 @@
             e terceiro paragrafo
 
         </div>
+
+        <div id="imagem_container"><img id="imagem" src=""> </img></div>
 
         <ul id="alternativas"> 
             <button id="alternativa1" >Alternativa 1</button>
