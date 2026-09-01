@@ -17,6 +17,7 @@ let qtdAcertos = 0;
 let qtdErros = 0;
 let questao = 0;
 let botaoQuestao = document.createElement("button");
+let questaoAtual;
 
 
 
@@ -43,7 +44,8 @@ const containerProximaQuestao = document.getElementById("botaoProxima");
 // elementos HTML correspondentes.
 function exibirQuestao(questao){
 
-    let questaoAtual = listaQuestoes[questao];
+    questaoAtual = listaQuestoes[questao];
+    console.log(questaoAtual);
 
     let fonte = questaoAtual.fonte;
     fonteElement.innerHTML = fonte;
@@ -93,7 +95,6 @@ function verificarResposta(alternativaSelecionada, botao){
 
     if (containerProximaQuestao.querySelector("button") == null) {
         
-        let questaoAtual = listaQuestoes[questao];
         let respostaCorreta = questaoAtual.resposta;
 
         qtdQuestoes++;
@@ -154,11 +155,11 @@ areaConhecimentoElement.onchange = function(){
 };
 
 // Retira a questão respondida da lista
-function gerenciadorListaQuestoes(idQuestao){
+function gerenciadorListaQuestoes(){
     listaQuestoes = listaQuestoes.filter(function(questao){
-        return questao.id !== idQuestao;})
+        return questao.id !== questaoAtual.id;})
 
-    console.log(listaQuestoes)
+    console.log(listaQuestoes);
 };
 
 // Sorteia a questão
