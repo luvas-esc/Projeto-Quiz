@@ -1,3 +1,6 @@
+import { plantaQuestao } from "./horta.js";
+
+
 
 // Pega o arquivo JSON com as questões
 let docQuestoes = await fetch("questoes_etec/questoes_etec.json");
@@ -14,6 +17,7 @@ let qtdAcertos = 0;
 let qtdErros = 0;
 let questao = 0;
 let botaoQuestao = document.createElement("button");
+
 
 
 // Define os elementos do HTML que serão atualizados com as informações das questões
@@ -76,6 +80,9 @@ function exibirQuestao(questao){
     alternativa4Element.style.backgroundColor = "";
     alternativa5Element.onclick = function() { verificarResposta('E', this) };
     alternativa5Element.style.backgroundColor = "";
+
+    gerenciadorListaQuestoes(id);
+    
 };
 
 
@@ -92,12 +99,13 @@ function verificarResposta(alternativaSelecionada, botao){
         qtdQuestoes++;
 
         if (alternativaSelecionada === respostaCorreta) {
+            plantaQuestao();
             qtdAcertos++;
             botao.style.backgroundColor = "#6ae068";
         }
 
         else {
-            botao.style.backgroundColor = "red"
+            botao.style.backgroundColor = "red";
 
             qtdErros++;
 
@@ -132,7 +140,7 @@ areaConhecimentoElement.onchange = function(){
     if (areaConhecimentoElement.value === "Todos"){
     listaQuestoes = dados.questoes;
     }
-    
+
     else{
     listaQuestoes = dados.questoes.filter(function(questao){
         
@@ -145,6 +153,21 @@ areaConhecimentoElement.onchange = function(){
 
 };
 
+// Retira a questão respondida da lista
+function gerenciadorListaQuestoes(idQuestao){
+    listaQuestoes = listaQuestoes.filter(function(questao){
+        return questao.id !== idQuestao;})
+
+    console.log(listaQuestoes)
+};
+
+// Sorteia a questão
+function sorteadorQuestao(){
+  questao = Math.floor(Math.random() * listaQuestoes.length);
+  console.log(questao);
+};
+
+
 
 // Exibe o botão de ir para a próxima questão caso ele não esteja disponível ainda. 
 function botaoProximaQuestao(){    
@@ -156,7 +179,8 @@ function botaoProximaQuestao(){
         botaoQuestao.textContent = "Próxima Questão"; 
         botaoQuestao.style.margin = "5px";
         botaoQuestao.onclick = function() {
-            exibirQuestao(questao+=1); 
+            sorteadorQuestao();
+            exibirQuestao(questao); 
             containerProximaQuestao.removeChild(botaoQuestao);
         }
     
