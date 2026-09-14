@@ -5,6 +5,16 @@ let x = 0;
 let y = 0;
 const tamanhoCelula = 50;
 const margem = 20;
+const larguraCanvas = 240;
+const alturaCanvas = 540;
+const escala = window.devicePixelRatio || 1;
+
+canvas.width = larguraCanvas * escala;
+canvas.height = alturaCanvas * escala;
+canvas.style.width = `${larguraCanvas}px`;
+canvas.style.height = `${alturaCanvas}px`;
+ctx.scale(escala, escala);
+ctx.imageSmoothingEnabled = false;
 
 function desenharGrid(tamanhoCelula, corLinha){
     const largura = 200;
