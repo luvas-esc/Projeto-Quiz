@@ -1,5 +1,4 @@
-import { plantaQuestao } from "./horta.js";
-
+import { plantaQuest } from "./hortaDOM.js";
 
 
 // Pega o arquivo JSON com as questões
@@ -100,7 +99,8 @@ function verificarResposta(alternativaSelecionada, botao){
         qtdQuestoes++;
 
         if (alternativaSelecionada === respostaCorreta) {
-            plantaQuestao();
+            //plantaQuestao();
+            plantaQuest();
             qtdAcertos++;
             botao.style.backgroundColor = "#6ae068";
         }
