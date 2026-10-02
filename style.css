@@ -1,119 +1,55 @@
-body{
-   
+/* =========================
+   CONFIGURAÇÕES GERAIS
+   ========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
     background-color: #FCB53B;
 }
 
-p{
- font-size: 10px;
- margin: 5px;
+p {
+    font-size: 10px;
+    margin: 5px;
 }
 
-#container-pagina{
 
+/* =========================
+   ESTRUTURA DA PÁGINA
+   ========================= */
+
+#container-pagina {
     display: grid;
     grid-template-columns: 80fr 20fr;
 }
-.quiz-container{
-    
-    align-items: left;
+
+
+/* =========================
+   CONTAINER DO QUIZ
+   ========================= */
+
+.quiz-container {
+    display: grid;
+    grid-template-columns: 85fr 15fr;
+
+    width: min(100%, 1000px);
+    padding: 15px;
 
     background-color: #FFECAD;
-
-    padding:15px;
-
-    border-radius:8px;
-    width: 1000px;
-    vertical-align: super;
-
-    display:grid;
-    grid-template-columns: 85fr 15fr;
-    
+    border-radius: 8px;
 }
 
-#horta-container{
+
+/* =========================
+   HORTA
+   ========================= */
+
+#horta-container {
     margin: 5px;
 }
-
-#fontePergunta{
-    margin:5px;
-    font-size: 7px;
-}
-
-#temaPerguntas{
-    margin: 5px;
-}
-
-#tituloQuiz{
-    margin: 5px;
-    display: flex;
-    justify-content: center;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-#areaConhecimento{
-    margin: 5px;
-}
-
-#enunciadoPergunta{
-    white-space: pre-wrap;
-    color:#074506;
-    text-align: justify;
-    margin: 5px;
-    padding: 5px;
-
-}
-
-
-#alternativas{
-    padding: 0px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: left;
-    margin: 5px;
-}
-
-button{
-    margin: 5px;
-    text-align: left;
-    appearance: none;
-    -webkit-appearance: none;
-}
-
-#infoUsuario{
-    border: solid 2px black;
-}
-
-#respondidas{
-    margin: 5px;
-}
-
-#acertos{
-    margin: 5px;
-}
-
-#colunaEsq{
-    margin: 5px;
-    border: 2px solid black
-}
-
-#colunaDir{
-    margin: 5px;
-    border: 2px solid black;
-    height: 200px;
-    width: 150px;
-}
-
-#botaoProxima{
-    margin: 5px;
-}
-
-#imagem_container{
-    margin: 5px;
-    display: flex;
-    justify-content: center;
-}
-
 
 #hortaDOM {
     display: grid;
@@ -127,13 +63,14 @@ button{
     padding: 5px;
 
     background-color: #eca043;
-    /* background-image: url("assets/terraFundo.png") */;
+    /* background-image: url("assets/terraFundo.png"); */
     background-position: center;
     background-size: 260px 260px;
     background-repeat: no-repeat;
+
     border-style: double;
 
-    box-sizing: content-box;
+    box-sizing: border-box;
 }
 
 #hortaDOM div {
@@ -153,25 +90,184 @@ button{
 #hortaDOM div img {
     width: 100%;
     height: 100%;
+
     object-fit: contain;
     image-rendering: pixelated;
 }
+
+
+/* =========================
+   TEXTOS DO QUIZ
+   ========================= */
+
+#tituloQuiz {
+    display: flex;
+    justify-content: center;
+
+    margin: 5px;
+
+    font-family:
+        'Lucida Sans',
+        'Lucida Sans Regular',
+        'Lucida Grande',
+        'Lucida Sans Unicode',
+        Geneva,
+        Verdana,
+        sans-serif;
+}
+
+#areaConhecimento {
+    margin: 5px;
+
+    font-family:
+        'Lucida Sans',
+        'Lucida Sans Regular',
+        'Lucida Grande',
+        'Lucida Sans Unicode',
+        Geneva,
+        Verdana,
+        sans-serif;
+
+    color: #074506;
+    background-color: white;
+}
+
+#fontePergunta {
+    margin: 5px;
+    font-size: 7px;
+}
+
+#temaPerguntas {
+    margin: 5px;
+}
+
+#enunciadoPergunta {
+    margin: 5px;
+    padding: 5px;
+
+    white-space: pre-wrap;
+
+    color: #074506;
+    text-align: justify;
+}
+
+
+/* =========================
+   ALTERNATIVAS
+   ========================= */
+
+#alternativas {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 10px;
+
+    margin: 5px;
+    padding: 0;
+}
+
+button {
+    padding: 5px;
+
+    text-align: left;
+
+    font-family:
+        'Lucida Sans',
+        'Lucida Sans Regular',
+        'Lucida Grande',
+        'Lucida Sans Unicode',
+        Geneva,
+        Verdana,
+        sans-serif;
+
+    color: black;
+    background-color: white;
+    width: 100%;
+}
+
+
+/* =========================
+   INFORMAÇÕES DO USUÁRIO
+   ========================= */
+
+#infoUsuario {
+    border: 2px solid black;
+}
+
+#respondidas {
+    margin: 5px;
+}
+
+#acertos {
+    margin: 5px;
+}
+
+
+/* =========================
+   COLUNAS
+   ========================= */
+
+#colunaEsq {
+    margin: 5px;
+    border: 2px solid black;
+}
+
+#colunaDir {
+    width: 150px;
+    height: 200px;
+
+    margin: 5px;
+
+    border: 2px solid black;
+}
+
+
+/* =========================
+   BOTÃO PRÓXIMA
+   ========================= */
+
+#botaoProxima {
+    box-sizing: border-box;
+    padding: 5px;
+    width: fit-content;
+}
+
+
+/* =========================
+   IMAGEM
+   ========================= */
+
+#imagem_container {
+    display: flex;
+    justify-content: center;
+
+    margin: 5px;
+}
+
+
+/* =========================
+   CELULAR
+   ========================= */
 
 @media (max-width: 450px) {
 
     #container-pagina {
         display: flex;
         flex-direction: column;
+
+        width: calc(100% - 10px);
+        margin: 5px auto;
     }
 
     .quiz-container {
-        max-width: 450px;
+        width: 100%;
     }
 
     button {
+        width: 100%;
+
+        padding: 10px;
         font-size: 16px;
-        padding: 10px 16px;
     }
 }
-
- 
