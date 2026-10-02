@@ -76,6 +76,8 @@ p{
 button{
     margin: 5px;
     text-align: left;
+    appearance: none;
+    -webkit-appearance: none;
 }
 
 #infoUsuario{
@@ -153,4 +155,11 @@ button{
     height: 100%;
     object-fit: contain;
     image-rendering: pixelated;
+}
+
+@media (max-width: 600px) {
+    button {
+        font-size: 16px;
+        padding: 10px 16px;
+    }
 }
