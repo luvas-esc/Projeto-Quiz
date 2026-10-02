@@ -157,9 +157,21 @@ button{
     image-rendering: pixelated;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 450px) {
+
+    #container-pagina {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .quiz-container {
+        max-width: 450px;
+    }
+
     button {
         font-size: 16px;
         padding: 10px 16px;
     }
 }
+
+ 
