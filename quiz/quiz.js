@@ -1,8 +1,8 @@
-import { plantaQuest } from "/quiz/hortaDOM.js";
+import { plantaQuest } from "./hortaDOM.js";
 
 
 // Pega o arquivo JSON com as questões
-let docQuestoes = await fetch("/quiz/questoes_etec/questoes_etec.json");
+let docQuestoes = await fetch("questoes_etec/questoes_etec.json");
 
 // Converte o arquivo JSON em um objeto JavaScript
 let dados = await docQuestoes.json();

@@ -22,11 +22,12 @@ body{
 }
 
 .quiz {
-    top: 10%;
-    left: 10%;
+    top: 30%;
+    left: 55%;
+ 
 }
 
 .blog {
-    top: 30%;
-    left: 55%;
+    top: 10%;
+    left: 10%;
 }
