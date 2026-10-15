@@ -31,9 +31,9 @@ console.log(containerHorta)
 function inserirNaCelula(linha, coluna){
 
     let semente = document.createElement("img");
-    semente.src = "/quiz/quiz_assets/sementePlantada.png";
+    semente.src = "./quiz_assets/sementePlantada.png";
     let planta1 = document.createElement("img");
-    planta1.src = "/quiz/quiz_assets/planta1.png";
+    planta1.src = "./quiz_assets/planta1.png";
 
 
     if (estagio == 1){
