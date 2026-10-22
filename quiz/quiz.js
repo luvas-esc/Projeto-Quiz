@@ -38,6 +38,9 @@ const respondidasElement = document.getElementById("respondidas");
 
 const containerProximaQuestao = document.getElementById("botaoProxima");
 
+const explicacaoElement = document.getElementById("infosAdicionais");
+
+const explicacaoDivElement = document.getElementById("contextoQuestao");
 
 // Função para exibir a questão atual. Colocando os valores de dados do JSON nos 
 // elementos HTML correspondentes.
@@ -63,6 +66,10 @@ function exibirQuestao(questao){
 } else {
     imagemElement.style.display = "none";
 }
+
+    let explicacao = questaoAtual.explicacao ?? "";
+    explicacaoElement.innerHTML = explicacao;
+
 
     let alternativas = questaoAtual.alternativas;
     alternativa1Element.innerHTML = alternativas.A;
@@ -183,6 +190,7 @@ function botaoProximaQuestao(){
             sorteadorQuestao();
             exibirQuestao(questao); 
             containerProximaQuestao.removeChild(botaoQuestao);
+            explicacaoDivElement.open = false;
         }
     
     containerProximaQuestao.appendChild(botaoQuestao);
